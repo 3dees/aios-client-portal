@@ -1,0 +1,55 @@
+// Version: 1.0.0
+type AgentStatus__370718578 = {#Active; #Idle; #Offline};
+type Agent__93792443 =
+  {
+    id : Text;
+    lastActivity : Int;
+    name : Text;
+    roleDescription : Text;
+    status : AgentStatus__370718578
+  };
+type ClientInfo__789644284 =
+  {clientName : Text; systemStatus : SystemStatus__684320700};
+type DailyBrief__622564372 =
+  {
+    date : Text;
+    executiveSummary : Text;
+    recommendedActions : [Text];
+    title : Text;
+    topPriorities : [Text]
+  };
+type Layer__891814851 =
+  {completionPct : Nat; id : Text; name : Text; statusLabel : Text};
+type Metric__88353151 =
+  {
+    awayFromDeskHours : Float;
+    awayFromDeskTarget : Float;
+    awayFromDeskTrend : TrendDirection__663571728;
+    revenuePerEmployee : Float;
+    revenuePerEmployeeTarget : Float;
+    revenuePerEmployeeTrend : TrendDirection__663571728;
+    taskAutomationPct : Float;
+    taskAutomationTarget : Float;
+    taskAutomationTrend : TrendDirection__663571728
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type SystemStatus__684320700 = {#Active; #Inactive; #Pending};
+type TrendDirection__663571728 = {#Down; #Flat; #Up};
+actor {
+  stable agents :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Agent__93792443]];
+      var elementIndex : Nat__490723111
+    };
+  stable briefRef : {var value : DailyBrief__622564372};
+  stable clientInfoRef : {var value : ClientInfo__789644284};
+  stable layers :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Layer__891814851]];
+      var elementIndex : Nat__490723111
+    };
+  stable metricsRef : {var value : Metric__88353151}
+};

@@ -1,0 +1,107 @@
+type UpdateMetricsInput = 
+ record {
+   awayFromDeskHours: float64;
+   awayFromDeskTarget: float64;
+   awayFromDeskTrend: TrendDirection;
+   revenuePerEmployee: float64;
+   revenuePerEmployeeTarget: float64;
+   revenuePerEmployeeTrend: TrendDirection;
+   taskAutomationPct: float64;
+   taskAutomationTarget: float64;
+   taskAutomationTrend: TrendDirection;
+ };
+type UpdateLayerInput = 
+ record {
+   completionPct: nat;
+   statusLabel: text;
+ };
+type UpdateDailyBriefInput = 
+ record {
+   date: text;
+   executiveSummary: text;
+   recommendedActions: vec text;
+   title: text;
+   topPriorities: vec text;
+ };
+type UpdateClientInfoInput = 
+ record {
+   clientName: text;
+   systemStatus: SystemStatus;
+ };
+type UpdateAgentInput = 
+ record {
+   lastActivity: int;
+   status: AgentStatus;
+ };
+type TrendDirection = 
+ variant {
+   Down;
+   Flat;
+   Up;
+ };
+type SystemStatus = 
+ variant {
+   Active;
+   Inactive;
+   Pending;
+ };
+type Metric = 
+ record {
+   awayFromDeskHours: float64;
+   awayFromDeskTarget: float64;
+   awayFromDeskTrend: TrendDirection;
+   revenuePerEmployee: float64;
+   revenuePerEmployeeTarget: float64;
+   revenuePerEmployeeTrend: TrendDirection;
+   taskAutomationPct: float64;
+   taskAutomationTarget: float64;
+   taskAutomationTrend: TrendDirection;
+ };
+type Layer = 
+ record {
+   completionPct: nat;
+   id: text;
+   name: text;
+   statusLabel: text;
+ };
+type DailyBrief = 
+ record {
+   date: text;
+   executiveSummary: text;
+   recommendedActions: vec text;
+   title: text;
+   topPriorities: vec text;
+ };
+type ClientInfo = 
+ record {
+   clientName: text;
+   systemStatus: SystemStatus;
+ };
+type AgentStatus = 
+ variant {
+   Active;
+   Idle;
+   Offline;
+ };
+type Agent = 
+ record {
+   id: text;
+   lastActivity: int;
+   name: text;
+   roleDescription: text;
+   status: AgentStatus;
+ };
+service : {
+  getAgent: (id: text) -> (opt Agent) query;
+  getClientInfo: () -> (ClientInfo) query;
+  getDailyBrief: () -> (DailyBrief) query;
+  getLayer: (id: text) -> (opt Layer) query;
+  getMetrics: () -> (Metric) query;
+  listAgents: () -> (vec Agent) query;
+  listLayers: () -> (vec Layer) query;
+  updateAgent: (id: text, input: UpdateAgentInput) -> (bool);
+  updateClientInfo: (input: UpdateClientInfoInput) -> ();
+  updateDailyBrief: (input: UpdateDailyBriefInput) -> ();
+  updateLayer: (id: text, input: UpdateLayerInput) -> (bool);
+  updateMetrics: (input: UpdateMetricsInput) -> ();
+}

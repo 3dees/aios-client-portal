@@ -1,0 +1,23 @@
+{
+  "overview": "AIOS Client Portal — a premium dark-themed dashboard for the AI Operating System service. Clients can view their six-agent team, track five-layer progress, monitor key results metrics, read daily briefings, and operators can manage all content through a built-in admin panel.",
+  "features": [
+    "Dashboard home with client welcome and AIOS system status",
+    "Six AI agent cards (Business Manager, Finance Manager, Content Strategist, Operations Architect, Success Coach, Security Officer) with status and activity",
+    "Five Layers progress view (Context, Data, Intelligence, Automate, Build)",
+    "Results dashboard with key metrics: Away-From-Desk Autonomy, Task Automation %, Revenue Per Employee",
+    "Daily brief section with morning briefing from Business Manager",
+    "Built-in admin panel to manage agent statuses, metrics, and brief content",
+    "Dark premium design with OKLCH color system",
+    "Navigation between all sections"
+  ],
+  "category": "productivity",
+  "tags": [
+    "dashboard",
+    "ai",
+    "client-portal",
+    "admin",
+    "dark-theme",
+    "productivity"
+  ],
+  "last_updated": "2026-04-17T00:23:14.325Z"
+}
